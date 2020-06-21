@@ -1,14 +1,29 @@
+@font-face {
+    font-family: YekanBakh;
+    src: url('./font/Yekan\ Bakh\ Medium.woff') format('truetype');
+    font-weight: normal;
+}
+
+
 html {
     box-sizing: border-box;
 }
 
 body {
     direction: rtl !important;
+    font-family: YekanBakh;
 }
 
 .marginPage {
     width: 100vw;
     height: 40px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
 }
 
 *,
@@ -23,15 +38,19 @@ body {
 
 .table-scroll {
     position: relative;
-    /* width:100%; */
+    width: 601px;
     z-index: 1;
     /* margin: auto; */
-    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: scroll;
     height: 350px;
+    border-radius: 36.3px;
+    border: solid 8px rgba(241, 196, 15, 0.5);
 }
 
 .table-scroll table {
     margin: auto;
+    overflow-x: hidden;
     /* border-collapse: separate; */
     border-spacing: 0;
 }
@@ -49,7 +68,7 @@ body {
 }
 
 .table-scroll thead th {
-    color: #fff;
+    color: #000000;
     position: -webkit-sticky;
     position: sticky;
     top: 0;
@@ -62,7 +81,7 @@ body {
     position: -webkit-sticky;
     position: sticky;
     bottom: 0;
-    color: #fff;
+    color: #000000;
     z-index: 4;
 }
 
@@ -72,11 +91,12 @@ body {
 
 
 th:first-child {
-    /* position: -webkit-sticky;
+    position: -webkit-sticky;
     position: sticky;
     left: 0;
-    z-index: 2; */
-    background: rgb(236, 236, 236);
+    z-index: 2;
+    /* color: #000000; */
+    /* background: rgb(236, 236, 236); */
 }
 
 thead th:first-child,
@@ -87,23 +107,50 @@ tfoot th:first-child {
 .main-table {
     width: 603px;
     height: 944px;
+    border: none !important;
 }
+
 
 .head {
     height: 65px;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: YekanBakh;
+    font-size: 22.2px !important;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #000000;
+    border: none !important;
+    padding: 0px !important;
+    box-shadow: 0 5px 25px -5px rgb(223, 223, 223);
 }
 
 
 /* ************* Content Of Row ************** */
 
+table td {
+
+    border: 1px solid #ffffff !important;
+}
+
+img {
+    width: 107px !important;
+    height: 107px !important;
+}
+
 .contentRow {
-    padding-top: 40px;
+    font-family: YekanBakh;
+    font-weight: bold;
+    padding-top: 22px;
     padding-bottom: 6px;
     padding-right: 38px;
     margin: 0px !important;
+    /* border-bottom: 1px solid #222222; */
 }
 
 .imageFood {
@@ -115,13 +162,28 @@ tfoot th:first-child {
 
 
 .nameFood {
+    font-size: 17.4px;
+    font-weight: bold;
+    color: #000000;
     margin: 0px !important;
     height: 26px;
 }
 
 .priceFood {
+    display: flex;
+    align-items: center;
+    font-size: 19.3px;
+    color: #000000;
     margin: 0px !important;
     height: 29px;
+}
+
+.priceFood span,
+#price span {
+    font-size: 14px;
+    margin-right: 5px;
+    display: flex;
+    align-items: center;
 }
 
 .countFood {
@@ -129,22 +191,72 @@ tfoot th:first-child {
     height: 42px;
 }
 
-#price {
-    height: 35px;
-    margin-left: 39px !important;
+#increase {
+    width: 12.5px;
+    height: 12.5px;
+    cursor: pointer;
+}
+
+#subtract {
+    width: 12.5px;
+    height: 12.5px;
+    cursor: pointer;
+}
+
+.fa-plus {
+    width: 10px;
+    height: 10px;
+    color: #e74c3c;
+}
+
+.fa-minus {
+    width: 10px;
+    height: 10px;
+    color: #e74c3c;
 }
 
 
+.vary {
+    height: 42px !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+}
+
+#countFood {
+    font-size: 28.1px;
+    height: 100%;
+    padding-left: 5px;
+}
+
+#price {
+    width: 150px;
+    height: 35px;
+    margin-left: 39px !important;
+    font-size: 22.8px;
+    display: flex !important;
+    direction: ltr !important;
+}
+
+.line {
+    width: 524px;
+    height: 1px;
+    border-bottom: 1px solid #c6c6c6;
+}
 
 
 /* ************** Footer ************** */
 
 .footer {
     height: 214px;
+    box-shadow: 0 -5px 40px -2px rgb(231, 231, 231);
+
 }
 
 .billSection {
     padding-top: 30px !important;
+    font-family: YekanBakh;
 }
 
 .priceContent {
@@ -152,18 +264,36 @@ tfoot th:first-child {
     padding: 0px !important;
 }
 
+.priceContent span {
+    padding-right: 5px;
+    font-size: 14px;
+    font-family: YekanBakh;
+    font-weight: bold;
+}
+
 .priceContent div {
     margin: 0px !important;
+    color: rgba(0, 0, 0, 0.71);
 }
 
 #totalOrder,
 #serve,
 #discount {
     height: 32px;
+    font-size: 21.1px;
 }
 
 #totalPrice {
     height: 68px;
+    font-family: YekanBakh;
+    font-size: 45.6px;
+    font-weight: bold;
+    color: #000000 !important;
+}
+
+.unitPrice {
+    font-size: 26px !important;
+    color: #000000 !important;
 }
 
 #discountCode {
@@ -171,6 +301,52 @@ tfoot th:first-child {
     margin-bottom: 15px;
 }
 
+#discountCode input {
+    width: 297.2px;
+    font-size: 21.1px;
+    font-weight: bold;
+    padding-right: 30px;
+    color: rgba(230, 126, 34, 0.71);
+    height: 45.6px;
+    border-radius: 22.8px;
+    border: solid 1.2px #e67e22;
+}
+
+#discountCode button {
+    position: absolute;
+    left: 3px;
+    top: 3px;
+
+    width: 40px;
+    height: 40px;
+    /* border-style: solid; */
+    border-radius: 100%;
+    border: none;
+    /* border-width: 1.2px; */
+    /* border-image-source: linear-gradient(to bottom, #f8c26e, #ffcd7e); */
+    /* border-image-slice: 1; */
+    background-color: #f39c12;
+    outline: none;
+}
+
+button .fa {
+    width: 16.4px;
+    height: 17.6px;
+}
+
 #submitOrder {
-    height: 68px;
+    width: 297.2px;
+    height: 67.9px;
+    font-weight: bold;
+    border-radius: 11.7px;
+    background-color: #e67e22;
+    outline: none;
+    border: none;
+    font-size: 29.3px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+footer th {
+    border: 1px solid white !important;
 }
