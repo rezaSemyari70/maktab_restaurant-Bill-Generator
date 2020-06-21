@@ -1,0 +1,176 @@
+html {
+    box-sizing: border-box;
+}
+
+body {
+    direction: rtl !important;
+}
+
+.marginPage {
+    width: 100vw;
+    height: 40px;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+.intro {
+    margin: 1em auto;
+}
+
+.table-scroll {
+    position: relative;
+    /* width:100%; */
+    z-index: 1;
+    /* margin: auto; */
+    overflow: auto;
+    height: 350px;
+}
+
+.table-scroll table {
+    margin: auto;
+    /* border-collapse: separate; */
+    border-spacing: 0;
+}
+
+.table-wrap {
+    position: relative;
+}
+
+.table-scroll th,
+.table-scroll td {
+    padding: 5px 10px;
+    border: 1px solid #000;
+    background: #fff;
+    vertical-align: top;
+}
+
+.table-scroll thead th {
+    color: #fff;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+
+/* safari and ios need the tfoot itself to be position:sticky also */
+.table-scroll tfoot,
+.table-scroll tfoot th,
+.table-scroll tfoot td {
+    position: -webkit-sticky;
+    position: sticky;
+    bottom: 0;
+    color: #fff;
+    z-index: 4;
+}
+
+.table-scroll {
+    height: calc(100vh - 80px) !important;
+}
+
+
+th:first-child {
+    /* position: -webkit-sticky;
+    position: sticky;
+    left: 0;
+    z-index: 2; */
+    background: rgb(236, 236, 236);
+}
+
+thead th:first-child,
+tfoot th:first-child {
+    z-index: 5;
+}
+
+.main-table {
+    width: 603px;
+    height: 944px;
+}
+
+.head {
+    height: 65px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* ************* Content Of Row ************** */
+
+.contentRow {
+    padding-top: 40px;
+    padding-bottom: 6px;
+    padding-right: 38px;
+    margin: 0px !important;
+}
+
+.imageFood {
+    width: 108px;
+    height: 107px;
+    margin-left: 15px !important;
+    padding: 0px !important;
+}
+
+
+.nameFood {
+    margin: 0px !important;
+    height: 26px;
+}
+
+.priceFood {
+    margin: 0px !important;
+    height: 29px;
+}
+
+.countFood {
+    margin: 0px !important;
+    height: 42px;
+}
+
+#price {
+    height: 35px;
+    margin-left: 39px !important;
+}
+
+
+
+
+/* ************** Footer ************** */
+
+.footer {
+    height: 214px;
+}
+
+.billSection {
+    padding-top: 30px !important;
+}
+
+.priceContent {
+    width: 282px;
+    padding: 0px !important;
+}
+
+.priceContent div {
+    margin: 0px !important;
+}
+
+#totalOrder,
+#serve,
+#discount {
+    height: 32px;
+}
+
+#totalPrice {
+    height: 68px;
+}
+
+#discountCode {
+    height: 46px;
+    margin-bottom: 15px;
+}
+
+#submitOrder {
+    height: 68px;
+}
