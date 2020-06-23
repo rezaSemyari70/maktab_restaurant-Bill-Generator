@@ -53,10 +53,10 @@ function totalOrder() {
     let totalOrders = 0;
     $.each($('[id^=price]'), function (index, element) {
         totalOrders += +($(this).text());
-        console.log(totalOrders);
     });
 
     $('#totalOrder').text(totalOrders);
+    bill();
 }
 
 
@@ -79,7 +79,7 @@ $('#usingDiscount').click(function (e) {
     $("#trash").click(function (e) {
         removeCode();
     });
-
+    bill();
 });
 
 
@@ -99,4 +99,14 @@ function removeCode() {
     $('#usingDiscount').append(`<i class="fa fa-plus text-white"></i>`).css('background', '#f39c12')
     $('#usingDiscount').css('background-color', '#f39c12');
     $('#discount').text(0)
+}
+
+// --------------  Calculat Total Price ----------------
+function bill() {
+    let priceOrders = +($('#totalOrder').text());
+    let serve = +($('#serve').text());
+    let discount = +($('#discount').text());
+    let totalPrice = (priceOrders + serve - discount);
+
+    $('#totalPrice').text(totalPrice);
 }
