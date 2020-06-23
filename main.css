@@ -215,7 +215,6 @@ img {
     color: #e74c3c;
 }
 
-
 .vary {
     height: 42px !important;
     display: flex;
@@ -224,16 +223,16 @@ img {
     padding-top: 10px;
 }
 
-#countFood {
+div[id*="countFood"] {
     font-size: 28.1px;
     height: 100%;
     padding-left: 5px;
 }
 
-#price {
+div[id*="price"] {
     width: 150px;
     height: 35px;
-    margin-left: 39px !important;
+    /* margin-left: 39px !important; */
     font-size: 22.8px;
     display: flex !important;
     direction: ltr !important;
