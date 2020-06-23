@@ -295,12 +295,12 @@ div[id*="price"] {
     color: #000000 !important;
 }
 
-#discountCode {
+#discountCodeBox {
     height: 46px;
     margin-bottom: 15px;
 }
 
-#discountCode input {
+#discountCodeBox input {
     width: 297.2px;
     font-size: 21.1px;
     font-weight: bold;
@@ -309,9 +309,10 @@ div[id*="price"] {
     height: 45.6px;
     border-radius: 22.8px;
     border: solid 1.2px #e67e22;
+    outline: none;
 }
 
-#discountCode button {
+#discountCodeBox button {
     position: absolute;
     left: 3px;
     top: 3px;
@@ -348,4 +349,19 @@ button .fa {
 
 footer th {
     border: 1px solid white !important;
+}
+
+
+/* ---- Discount Code-----*/
+
+.wrong{
+    background-color: #fbdfdc;
+}
+
+.correct{
+    background-color: #d9f6e6;
+}
+
+.empty{
+    background-color: white;
 }

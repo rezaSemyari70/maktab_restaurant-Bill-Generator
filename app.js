@@ -58,3 +58,45 @@ function totalOrder() {
 
     $('#totalOrder').text(totalOrders);
 }
+
+
+
+// **************** discount ****************
+
+$('#usingDiscount').click(function (e) {
+
+    $('#discountCode').removeClass();
+
+    let textCode = $('#discountCode').val();
+    if (textCode == 'maktab34') {
+        correctMode();
+    } else if (textCode != 'maktab34' && textCode != '') {
+        $('#discountCode').addClass('wrong');
+    } else if (textCode == '') {
+        $('#discountCode').addClass('empty');
+    }
+
+    $("#trash").click(function (e) {
+        removeCode();
+    });
+
+});
+
+
+
+// ----------- Correct Discount Code -----------
+function correctMode() {
+    $('button i').remove();
+    $('#usingDiscount').append(`<i id="trash" class="fa fa-trash text-white"></i>`).css('background-color', '#e74c3c');
+    $('#discountCode').addClass('correct');
+    $('#discount').text($('#totalOrder').text() * 0.09)
+}
+
+// ----------- Remove Discount Code --------------
+function removeCode() {
+    $('#discountCode').val('')
+    $('button i').remove();
+    $('#usingDiscount').append(`<i class="fa fa-plus text-white"></i>`).css('background', '#f39c12')
+    $('#usingDiscount').css('background-color', '#f39c12');
+    $('#discount').text(0)
+}
