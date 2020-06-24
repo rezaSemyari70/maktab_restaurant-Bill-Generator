@@ -191,7 +191,7 @@ img {
     height: 42px;
 }
 
-#increase {
+div[id*="increase"] {
     width: 12.5px;
     height: 12.5px;
     cursor: pointer;
