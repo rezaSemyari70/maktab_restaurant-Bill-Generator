@@ -2,7 +2,6 @@
 
 // --------- When Increse Count Of Food ----------
 $(document).on("click", "[id^=increase]", function () {
-
     //get id selected
     let increaseId = $(this).attr('id');
     let num = increaseId.slice(-2);
@@ -21,13 +20,15 @@ $(document).on("click", "[id^=increase]", function () {
     let unitPrice = +($(`#unitPrice${num}`).text());
     let price = unitPrice * countFood;
     $(`#price${num}`).text(price);
+
     totalOrder()
+    calcuteDiscount()  
+    bill();
 });
 
 // --------- When Decrease Count Of Food ----------
 
 $(document).on("click", "[id^=subtract]", function () {
-
     //get id selected
     let decreaseId = $(this).attr('id');
     let num = decreaseId.slice(-2);
@@ -45,6 +46,8 @@ $(document).on("click", "[id^=subtract]", function () {
     let price = unitPrice * countFood;
     $(`#price${num}`).text(price);
     totalOrder()
+    calcuteDiscount()  
+    bill();
 });
 
 // --------- Total Orders ----------
@@ -60,20 +63,27 @@ function totalOrder() {
 }
 
 
-
 // **************** discount ****************
+const discountCodes = {
+    codeOff1: '$maktabLowOff',
+    codeOff2: '$maktabMidOff',
+    codeOff3: '$maktabHighOff'
+}
 
 $('#usingDiscount').click(function (e) {
 
     $('#discountCode').removeClass();
-
+    $('#discountCodeBox input').css('border' , '1px solid #e67e22');
     let textCode = $('#discountCode').val();
-    if (textCode == 'maktab34') {
+    if (textCode == discountCodes.codeOff1 || textCode == discountCodes.codeOff2 || textCode == discountCodes.codeOff3) {
         correctMode();
-    } else if (textCode != 'maktab34' && textCode != '') {
-        $('#discountCode').addClass('wrong');
-    } else if (textCode == '') {
-        $('#discountCode').addClass('empty');
+    } else if (textCode != discountCodes.codeOff1 || textCode != discountCodes.codeOff2 || textCode != discountCodes.codeOff3) {
+        if (textCode != '') {
+            $('#discountCode').addClass('wrong');
+            $('#discountCodeBox input').css('border' , '1px solid red');
+        } else {
+            $('#discountCode').addClass('empty');
+        }
     }
 
     $("#trash").click(function (e) {
@@ -83,19 +93,38 @@ $('#usingDiscount').click(function (e) {
 });
 
 
-
 // ----------- Correct Discount Code -----------
 function correctMode() {
+    
     $('button i').remove();
     $('#usingDiscount').append(`<i id="trash" class="fa fa-trash text-white"></i>`).css('background-color', '#e74c3c');
+    $('#discountCodeBox input').css('border' , '1px solid red');
     $('#discountCode').addClass('correct');
-    $('#discount').text($('#totalOrder').text() * 0.09)
+
+    calcuteDiscount()    
+}
+
+// -------  Calcute Dicount --------
+
+function calcuteDiscount(){
+
+    let priceOrders = $('#totalOrder').text();
+    let textCode = $('#discountCode').val();
+
+    if (textCode == discountCodes.codeOff1) {
+        $('#discount').text(priceOrders * 0.12)
+    } else if (textCode == discountCodes.codeOff2) {
+        $('#discount').text(priceOrders * 0.2)
+    } else if (textCode == discountCodes.codeOff3) {
+        $('#discount').text(priceOrders * 0.5)
+    }
 }
 
 // ----------- Remove Discount Code --------------
 function removeCode() {
     $('#discountCode').val('')
     $('button i').remove();
+    $('#discountCodeBox input').css('border' , '1px solid #e67e22');
     $('#usingDiscount').append(`<i class="fa fa-plus text-white"></i>`).css('background', '#f39c12')
     $('#usingDiscount').css('background-color', '#f39c12');
     $('#discount').text(0)

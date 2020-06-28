@@ -305,6 +305,7 @@ div[id*="price"] {
     font-size: 21.1px;
     font-weight: bold;
     padding-right: 30px;
+    padding-top: 5px;
     color: rgba(230, 126, 34, 0.71);
     height: 45.6px;
     border-radius: 22.8px;
@@ -316,17 +317,17 @@ div[id*="price"] {
     position: absolute;
     left: 3px;
     top: 3px;
-
     width: 40px;
     height: 40px;
-    /* border-style: solid; */
     border-radius: 100%;
     border: none;
-    /* border-width: 1.2px; */
-    /* border-image-source: linear-gradient(to bottom, #f8c26e, #ffcd7e); */
-    /* border-image-slice: 1; */
     background-color: #f39c12;
     outline: none;
+}
+
+#discountCode::placeholder{
+    color : #f39c12;
+    padding-top: 10px !important;
 }
 
 button .fa {
