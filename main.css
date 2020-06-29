@@ -4,6 +4,12 @@
     font-weight: normal;
 }
 
+@font-face {
+    font-family: Yekan;
+    src: url('./font/Yekan.ttf') format('truetype');
+    font-weight: normal;
+}
+
 
 html {
     box-sizing: border-box;
@@ -186,9 +192,18 @@ img {
     align-items: center;
 }
 
+div[id*="price"] {
+    font-family: Yekan;
+}
+
 .countFood {
     margin: 0px !important;
     height: 42px;
+}
+
+div[id*="countFood"] {
+    font-family: Yekan;
+    letter-spacing: -2px;
 }
 
 div[id*="increase"] {
@@ -234,6 +249,8 @@ div[id*="price"] {
     height: 35px;
     /* margin-left: 39px !important; */
     font-size: 22.8px;
+    font-weight: 600;
+    letter-spacing: -2px;
     display: flex !important;
     direction: ltr !important;
 }
@@ -256,6 +273,7 @@ div[id*="price"] {
 .billSection {
     padding-top: 30px !important;
     font-family: YekanBakh;
+    font-weight: 500;
 }
 
 .priceContent {
@@ -279,20 +297,35 @@ div[id*="price"] {
 #serve,
 #discount {
     height: 32px;
-    font-size: 21.1px;
+    font-size: 20px;
+    font-family: Yekan;
+    letter-spacing: -2px;
 }
 
 #totalPrice {
     height: 68px;
-    font-family: YekanBakh;
-    font-size: 45.6px;
+    font-family: Yekan;
+    font-size: 43px;
     font-weight: bold;
     color: #000000 !important;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: -2px !important;
 }
 
 .unitPrice {
     font-size: 26px !important;
     color: #000000 !important;
+}
+
+span {
+    align-self: flex-end;
+}
+
+div[id*="unitPrice"] {
+    font-family: Yekan;
 }
 
 #discountCodeBox {
@@ -305,7 +338,7 @@ div[id*="price"] {
     font-size: 21.1px;
     font-weight: bold;
     padding-right: 30px;
-    padding-top: 5px;
+    padding-top: 10px;
     color: rgba(230, 126, 34, 0.71);
     height: 45.6px;
     border-radius: 22.8px;
@@ -325,8 +358,8 @@ div[id*="price"] {
     outline: none;
 }
 
-#discountCode::placeholder{
-    color : #f39c12;
+#discountCode::placeholder {
+    color: #f39c12;
     padding-top: 10px !important;
 }
 
@@ -355,14 +388,14 @@ footer th {
 
 /* ---- Discount Code-----*/
 
-.wrong{
+.wrong {
     background-color: #fbdfdc;
 }
 
-.correct{
+.correct {
     background-color: #d9f6e6;
 }
 
-.empty{
+.empty {
     background-color: white;
 }

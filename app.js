@@ -18,11 +18,11 @@ $(document).on("click", "[id^=increase]", function () {
     }
     // calulate of price
     let unitPrice = +($(`#unitPrice${num}`).text());
-    let price = unitPrice * countFood;
+    let price = separateNumber(unitPrice * countFood);
     $(`#price${num}`).text(price);
 
     totalOrder()
-    calcuteDiscount()  
+    calcuteDiscount()
     bill();
 });
 
@@ -43,10 +43,10 @@ $(document).on("click", "[id^=subtract]", function () {
     }
     // calulate of price
     let unitPrice = +($(`#unitPrice${num}`).text());
-    let price = unitPrice * countFood;
+    let price = separateNumber(unitPrice * countFood);
     $(`#price${num}`).text(price);
     totalOrder()
-    calcuteDiscount()  
+    calcuteDiscount()
     bill();
 });
 
@@ -55,11 +55,10 @@ $(document).on("click", "[id^=subtract]", function () {
 function totalOrder() {
     let totalOrders = 0;
     $.each($('[id^=price]'), function (index, element) {
-        totalOrders += +($(this).text());
+        totalOrders += +($(this).text().replace('/', ''));
     });
 
-    $('#totalOrder').text(totalOrders);
-    bill();
+    $('#totalOrder').text(separateNumber(totalOrders));
 }
 
 
@@ -73,14 +72,14 @@ const discountCodes = {
 $('#usingDiscount').click(function (e) {
 
     $('#discountCode').removeClass();
-    $('#discountCodeBox input').css('border' , '1px solid #e67e22');
+    $('#discountCodeBox input').css('border', '1px solid #e67e22');
     let textCode = $('#discountCode').val();
     if (textCode == discountCodes.codeOff1 || textCode == discountCodes.codeOff2 || textCode == discountCodes.codeOff3) {
         correctMode();
     } else if (textCode != discountCodes.codeOff1 || textCode != discountCodes.codeOff2 || textCode != discountCodes.codeOff3) {
         if (textCode != '') {
             $('#discountCode').addClass('wrong');
-            $('#discountCodeBox input').css('border' , '1px solid red');
+            $('#discountCodeBox input').css('border', '1px solid red');
         } else {
             $('#discountCode').addClass('empty');
         }
@@ -95,28 +94,28 @@ $('#usingDiscount').click(function (e) {
 
 // ----------- Correct Discount Code -----------
 function correctMode() {
-    
+
     $('button i').remove();
     $('#usingDiscount').append(`<i id="trash" class="fa fa-trash text-white"></i>`).css('background-color', '#e74c3c');
-    $('#discountCodeBox input').css('border' , '1px solid red');
+    $('#discountCodeBox input').css('border', '1px solid red');
     $('#discountCode').addClass('correct');
 
-    calcuteDiscount()    
+    calcuteDiscount()
 }
 
 // -------  Calcute Dicount --------
 
-function calcuteDiscount(){
+function calcuteDiscount() {
 
-    let priceOrders = $('#totalOrder').text();
+    let priceOrders = +($('#totalOrder').text().replace('/', ''));
     let textCode = $('#discountCode').val();
 
     if (textCode == discountCodes.codeOff1) {
-        $('#discount').text(priceOrders * 0.12)
+        $('#discount').text(separateNumber(priceOrders * 0.12))
     } else if (textCode == discountCodes.codeOff2) {
-        $('#discount').text(priceOrders * 0.2)
+        $('#discount').text(separateNumber(priceOrders * 0.2))
     } else if (textCode == discountCodes.codeOff3) {
-        $('#discount').text(priceOrders * 0.5)
+        $('#discount').text(separateNumber(priceOrders * 0.5))
     }
 }
 
@@ -124,7 +123,7 @@ function calcuteDiscount(){
 function removeCode() {
     $('#discountCode').val('')
     $('button i').remove();
-    $('#discountCodeBox input').css('border' , '1px solid #e67e22');
+    $('#discountCodeBox input').css('border', '1px solid #e67e22');
     $('#usingDiscount').append(`<i class="fa fa-plus text-white"></i>`).css('background', '#f39c12')
     $('#usingDiscount').css('background-color', '#f39c12');
     $('#discount').text(0)
@@ -132,10 +131,17 @@ function removeCode() {
 
 // --------------  Calculat Total Price ----------------
 function bill() {
-    let priceOrders = +($('#totalOrder').text());
-    let serve = +($('#serve').text());
-    let discount = +($('#discount').text());
-    let totalPrice = (priceOrders + serve - discount);
+    let priceOrders = +($('#totalOrder').text().replace('/', ''));
+    let serve = +($('#serve').text().replace('/', ''));
+    let discount = +($('#discount').text().replace('/', ''));
+    let totalPrice = ((priceOrders + serve) - discount);
+   
+    $('#totalPrice').text(separateNumber(totalPrice));
+}
 
-    $('#totalPrice').text(totalPrice);
+
+// -------- Function For Separate 3 Digits ---------
+
+function separateNumber(num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1/')
 }
